@@ -1,0 +1,31 @@
+// suppress inspection "SpellCheckingInspection" for whole file
+
+### Get all books
+GET {{host}}{{api}}/Books
+
+### Create a book
+POST {{host}}{{api}}/Books
+content-type: application/json
+
+{
+ "id": 1,
+ "title": "Wuthering Heights",
+ "descr": "Wuthering Heights, Emily Brontë's only novel, was published in 1847 under the pseudonym Ellis Bell. It was written between October 1845 and June 1846. Wuthering Heights and Anne Brontë's Agnes Grey were accepted by publisher Thomas Newby before the success of their sister Charlotte's novel Jane Eyre. After Emily's death, Charlotte edited the manuscript of Wuthering Heights and arranged for the edited version to be published as a posthumous second edition in 1850.",
+ "author": "Jane Austen",
+ "genre": "Drama"
+}
+
+### Get the book
+GET {{host}}{{api}}/Books(id=1)
+
+### Update the book
+PATCH {{host}}{{api}}/Books(1)
+content-type: application/json
+
+{
+ "author": "Emily Brontë"
+}
+
+### Delete the book
+DELETE {{host}}{{api}}/Books(id=1)
+content-type: application/json
