@@ -6,10 +6,7 @@ annotate CatalogService.Books with @(UI: {
         TypeNamePlural: 'Books',
     },
     LineItem           : [
-        {
-            Value: title,
-            Label: 'Title'
-        },
+        {Value: title},
         {Value: author},
         {Value: genre},
         {Value: price},
@@ -18,9 +15,9 @@ annotate CatalogService.Books with @(UI: {
             ![@UI.Hidden]
         },
         {
-            Value: id,
+            Value: currency_code,
             ![@UI.Hidden]
-        }
+        },
     ],
     SelectionFields    : [
         author,
@@ -32,6 +29,8 @@ annotate CatalogService.Books with @(UI: {
         Visualizations: ['@UI.LineItem']
     },
 }) {
+    @UI.HiddenFilter
+    descr;
     @Measures.ISOCurrency: currency.code
-    price
+    price;
 };
