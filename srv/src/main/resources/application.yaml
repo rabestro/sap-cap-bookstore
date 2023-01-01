@@ -4,3 +4,4 @@ spring:
 cds:
   datasource:
     auto-config.enabled: false
+  odata-v4.endpoint.path: "/api"
