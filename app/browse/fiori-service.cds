@@ -5,4 +5,18 @@ annotate CatalogService.Books with @(UI : {
          TypeName : 'Book',
          TypeNamePlural : 'Books',
      },
+    LineItem : [
+        {
+            Value: title,
+            Label: 'Title'
+        },
+        {
+            Value: author,
+            Label: 'Author'
+        },
+        {
+            Value: genre,
+            Label: 'Genre'
+        }
+    ],
 });
