@@ -1,6 +1,6 @@
 namespace rabestro.bookshop;
 
-using {rabestro.bookshop as bookshop} from './index';
+using {rabestro.bookshop as bookshop} from '.';
 
 using {
     Currency,
@@ -9,10 +9,10 @@ using {
 
 entity Books : cuid {
     isbn     : Int64;
-    title    : String(100)   @mandatory;
-    descr    : String(5000);
-    author   : String(100)   @mandatory;
-    genre    : String(100);
+    title    : bookshop.Name @mandatory;
+    descr    : bookshop.Text;
+    author   : bookshop.Name @mandatory;
+    genre    : bookshop.Name;
     rating   : Decimal(2, 1) @assert.range: [
         0.0,
         5.0
