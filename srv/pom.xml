@@ -13,6 +13,9 @@
 	<packaging>jar</packaging>
 
 	<name>Bookstore</name>
+	<description>
+		A bookshop web application
+	</description>
 	<inceptionYear>2023</inceptionYear>
 
 	<!-- ACTUAL DEPENDENCIES -->
