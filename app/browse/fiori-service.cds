@@ -11,6 +11,10 @@ annotate CatalogService.Books with @(UI: {
         {Value: genre},
         {Value: price},
         {
+            $Type : 'UI.DataFieldForAnnotation',
+            Target: '@UI.DataPoint#rating'
+        },
+        {
             Value: descr,
             ![@UI.Hidden]
         },
@@ -28,9 +32,15 @@ annotate CatalogService.Books with @(UI: {
         SortOrder     : [{Property: title}],
         Visualizations: ['@UI.LineItem']
     },
+    DataPoint #rating  : {
+        Value        : rating,
+        Visualization: #Rating,
+        TargetValue  : 5
+    }
 }) {
     @UI.HiddenFilter
     descr;
     @Measures.ISOCurrency: currency.code
     price;
+
 };
