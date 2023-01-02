@@ -27,9 +27,9 @@ public class CatalogServiceHandler implements EventHandler {
 
     @On(event = AddReviewContext.CDS_NAME)
     public void addReview(AddReviewContext context) {
-        db.run(Insert
-                .into(Reviews_.CDS_NAME)
-                .entry(review(context)));
+        var sql = Insert.into(Reviews_.CDS_NAME).entry(review(context));
+        var review = db.run(sql).single(Reviews.class);
+        context.setResult(review);
     }
 
     private Reviews review(AddReviewContext context) {
