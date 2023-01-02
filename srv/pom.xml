@@ -12,7 +12,8 @@
 	<artifactId>bookstore</artifactId>
 	<packaging>jar</packaging>
 
-	<name>bookstore</name>
+	<name>Bookstore</name>
+	<inceptionYear>2023</inceptionYear>
 
 	<!-- ACTUAL DEPENDENCIES -->
 	<dependencies>
@@ -143,4 +144,6 @@
 			</properties>
 		</profile>
 	</profiles>
+
 </project>
+
