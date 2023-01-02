@@ -6,6 +6,7 @@ annotate bookshop.Books with {
     genre    @title: 'Genre';
     price    @title: 'Price';
     descr    @title: 'Description';
+    rating   @title: 'Rating';
     currency @UI.Hidden;
     id       @UI.Hidden;
 }
