@@ -1,6 +1,6 @@
 namespace rabestro.bookshop;
 
-using {rabestro.bookshop as bookshop} from './index';
+using {rabestro.bookshop as bookshop} from '.';
 
 using {
     Currency,
