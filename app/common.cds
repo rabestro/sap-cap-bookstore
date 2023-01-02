@@ -1,4 +1,4 @@
-using {rabestro.bookshop as bookshop} from '../db/index';
+using {rabestro.bookshop as bookshop} from '../db/entities';
 
 annotate bookshop.Books with {
     author   @title: 'Author';
