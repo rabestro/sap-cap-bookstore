@@ -1,19 +1,23 @@
 using CatalogService from '../../srv/cat-service';
 
 annotate CatalogService.Books with @(UI: {
-    HeaderInfo         : {
+    HeaderInfo           : {
         TypeName      : 'Book',
         TypeNamePlural: 'Books',
     },
-    LineItem           : [
+    LineItem             : [
         {Value: title},
         {Value: author},
         {Value: genre},
-        {Value: price},
         {
             $Type : 'UI.DataFieldForAnnotation',
             Target: '@UI.DataPoint#rating'
         },
+        {
+            $Type : 'UI.DataFieldForAnnotation',
+            Target: '@UI.FieldGroup#AddReview'
+        },
+        {Value: price},
         {
             Value: descr,
             ![@UI.Hidden]
@@ -23,24 +27,29 @@ annotate CatalogService.Books with @(UI: {
             ![@UI.Hidden]
         },
     ],
-    SelectionFields    : [
+    SelectionFields      : [
         author,
         genre
     ],
-    PresentationVariant: {
+    PresentationVariant  : {
         Text          : 'Default',
         SortOrder     : [{Property: title}],
         Visualizations: ['@UI.LineItem']
     },
-    DataPoint #rating  : {
+    DataPoint #rating    : {
         Value        : rating,
         Visualization: #Rating,
         TargetValue  : 5
-    }
+    },
+    FieldGroup #AddReview: {Data: [{
+        $Type             : 'UI.DataFieldForAction',
+        Label             : 'Add Review',
+        Action            : 'CatalogService.addReview',
+        InvocationGrouping: #Isolated
+    }]}
 }) {
     @UI.HiddenFilter
     descr;
     @Measures.ISOCurrency: currency.code
     price;
-
 };
