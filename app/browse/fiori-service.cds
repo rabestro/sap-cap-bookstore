@@ -53,3 +53,7 @@ annotate CatalogService.Books with @(UI: {
     @Measures.ISOCurrency: currency.code
     price;
 };
+
+annotate CatalogService.Books actions {
+    addReview(rating  @title: 'Rating',  title  @title: 'Title',  text  @title: 'Review'  )
+};
