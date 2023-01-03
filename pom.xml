@@ -136,20 +136,20 @@
                         <siteOutputEncoding>${project.build.sourceEncoding}</siteOutputEncoding>
                     </configuration>
                 </plugin>
+
+                <!-- MAKE SPRING BOOT PLUGIN RUNNABLE FROM ROOT -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
-            <!-- MAKE SPRING BOOT PLUGIN RUNNABLE FROM ROOT -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-
             <!-- POM FLATTENING FOR CI FRIENDLY VERSIONS -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
