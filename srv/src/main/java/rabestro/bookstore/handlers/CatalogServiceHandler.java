@@ -27,24 +27,32 @@ public class CatalogServiceHandler implements EventHandler {
 
     @On(event = AddReviewContext.CDS_NAME)
     public void addReview(AddReviewContext context) {
-        var sql = Insert.into(Reviews_.CDS_NAME).entry(review(context));
-        var review = db.run(sql).single(Reviews.class);
-        context.setResult(review);
+        var savedReview = this.new BookReview(context).save();
+        context.setResult(savedReview);
     }
 
-    private Reviews review(AddReviewContext context) {
-        var review = Reviews.create();
-        review.setBookId(bookId(context));
-        review.setTitle(context.getTitle());
-        review.setText(context.getText());
-        review.setRating(context.getRating());
-        return review;
-    }
+    private class BookReview {
+        private final Reviews review;
 
-    private String bookId(AddReviewContext context) {
-        return (String) analyzer
-                .analyze(context.getCqn())
-                .targetKeys()
-                .get(Books.ID);
+        BookReview(AddReviewContext context) {
+            review = Reviews.create();
+            review.setBookId(bookId(context));
+            review.setTitle(context.getTitle());
+            review.setText(context.getText());
+            review.setRating(context.getRating());
+        }
+
+        private String bookId(AddReviewContext context) {
+            return (String) CatalogServiceHandler.this.analyzer
+                    .analyze(context.getCqn())
+                    .targetKeys()
+                    .get(Books.ID);
+        }
+
+        Reviews save() {
+            var sql = Insert.into(Reviews_.CDS_NAME).entry(review);
+            return db.run(sql)
+                    .single(Reviews.class);
+        }
     }
 }
